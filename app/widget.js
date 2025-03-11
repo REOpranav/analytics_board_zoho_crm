@@ -83,7 +83,7 @@ const leadSource = async (value, subtractDate = 30) => {
 
     value.forEach(fetchedValue => {
         (fetchedValue?.Created_Time >= todayToSubtractDate?.toISOString() && totalValueUnderTheSpecificDate.push(fetchedValue))
-        leadSource[fetchedValue?.Data_Source == 'null' ? 'In-App' : fetchedValue?.Data_Source ? fetchedValue?.Data_Source : 'In-App'] = (leadSource[fetchedValue?.Data_Source == 'null' ? 'In-App' : fetchedValue?.Data_Source ? fetchedValue?.Data_Source : 'In-App'] || 0) + 1
+        leadSource[fetchedValue?.Lead_Source == 'null' ? 'In-App' : fetchedValue?.Lead_Source ? fetchedValue?.Lead_Source : 'In-App'] = (leadSource[fetchedValue?.Lead_Source == 'null' ? 'In-App' : fetchedValue?.Lead_Source ? fetchedValue?.Lead_Source : 'In-App'] || 0) + 1
     })
     return { leadSource, totalValueUnderTheSpecificDate }
 }
@@ -224,6 +224,8 @@ function barChart(sourceData) {
 
 
 function convertiondatas(source, convertionData) {
+    console.log(source);
+    
     const convertion = document.querySelector('.convertionh3')
     convertion.textContent = convertionData?.length
 
